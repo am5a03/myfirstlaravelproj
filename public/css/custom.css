@@ -1,0 +1,19 @@
+.vote-up{
+	color: green;
+}
+
+.vote-down{
+	color: red;
+
+}
+
+.vote{
+	cursor: pointer;
+}
+
+.post-votes{
+	display:block;
+	float:right;
+	width: 50%;
+	font-size: larger;
+}
