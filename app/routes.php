@@ -19,8 +19,13 @@ Route::get('/post/{post}', 'PostController@showPost');
 
 Route::get('/', 'IndexController@getIndex');
 Route::get('/login', 'IndexController@showLogin');
+Route::post('/login', array('uses' => 'IndexController@doLogin'));
+Route::get('/logout', 'IndexController@doLogout');
 Route::get('/login/fb', 'IndexController@doFbLogin');
 Route::get('/login/fb/callback', 'IndexController@doFbLoginCallback');
+
+Route::post('/vote', 'IndexController@vote');
+
 Route::get('/getpage', 'IndexController@getPage');
 
 Route::get('users', function()

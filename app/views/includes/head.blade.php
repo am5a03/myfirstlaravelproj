@@ -20,4 +20,30 @@
        		});
    		}
 	});
+
+  vote = function(ref, id, isUp){
+    
+    var self = ref;
+    var nextElemSib = self.nextElementSibling;
+    var prevElemSib = self.previousElementSibling;
+    // console.log(nextElemSib.getElementsByTagName('span')[1].innerHTML);
+    // console.log(prevElemSib);
+    $.ajax({
+      type: "POST",
+      url: '/vote',
+      dataType: 'json',
+      data: { post_id : id, is_up : isUp },
+      success: function(data, status){
+        if(data.up && data.down){
+          if(isUp == 1){
+            ref.getElementsByTagName('span')[1].innerHTML = data.up;
+            nextElemSib.getElementsByTagName('span')[1].innerHTML = data.down;
+          }else{
+            ref.getElementsByTagName('span')[1].innerHTML = data.down;
+            prevElemSib.getElementsByTagName('span')[1].innerHTML = data.up;
+          }
+        }
+      },
+    });
+  }
 </script>

@@ -3,8 +3,8 @@
 				<h1 class="post-title"><a href='/post/{{$post->id}}'>{{$post->title}}</a></h1>
 			</header>
 			<div class="post-votes">
-				<span class="vote">+</span><span class="vote-up vote">{{$post->up}}</span>
-				<span class="vote">-</span><span class="vote-down vote">{{$post->down}}</span>
+				<span onclick="vote(this, {{$post->id}}, 1)"><span class="vote">+</span><span class="vote-up vote">{{$post->up}}</span></span>
+				<span onclick="vote(this, {{$post->id}}, 0)"><span class="vote">-</span><span class="vote-down vote">{{$post->down}}</span></span>
 			</div>
 			<div class="fb-share-button" data-href='/post/{{$post->id}}' data-type="button_count"></div>
 

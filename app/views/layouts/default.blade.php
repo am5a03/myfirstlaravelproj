@@ -11,6 +11,9 @@
 		@include('includes.header')
 	</header>
 	<div id="blank" style="display:block; height: 50px"></div>
+	@if (Session::get('messages'))
+	<div class="alert alert-success">{{ Session::get('messages') }}</div>
+	@endif
 	<div id="main" class="row">
 
 			@yield('content')

@@ -1,6 +1,9 @@
 @extends('layouts.default')
 @section('content')
 <h1>Login/Signup?</h1>
+@if (sizeof($errors))
+<div class="alert alert-danger">{{ $errors }}</div>
+@endif
 {{ Form::open(array('url' => 'login')) }}
 		<p>
 			{{ Form::label('username', 'User name') }}
@@ -8,7 +11,7 @@
 		</p>
 		<p>
 			{{ Form::label('password', 'Password') }}
-			{{ Form::password('password') }}
+			{{ Form::password('password', array('placeholder' => 'Password')) }}
 		</p>
 		<p>{{ Form::submit('Submit') }}</p>
 {{ Form::close() }}
