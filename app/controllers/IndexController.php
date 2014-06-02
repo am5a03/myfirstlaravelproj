@@ -58,6 +58,39 @@ class IndexController extends BaseController {
  		return Redirect::to('/')->with('messages', "Welcome back, $uid");
 	}
 
+	public function doGoogleLogin(){
+		$code = Input::get( 'code' );
+		$googleService = OAuth::consumer( 'Google' );
+
+		if(!empty($code)){
+			$token = $googleService->requestAccessToken( $code );
+
+			$result = json_decode( $googleService->request( 'https://www.googleapis.com/oauth2/v1/userinfo' ), true );
+
+			$uid = $result['email'];
+
+			$user = User::whereUsername($uid)->first();
+
+			if(empty($user)){
+				$user = new User;
+				$user->name = $result['given_name']. ' ' . $result['family_name'];
+				$user->email = $result['email'];
+				$user->username = $result['email'];
+				$user->photo = $result['picture'];
+
+				$user->save();
+			}
+
+			Auth::login($user);
+
+			return Redirect::to('/')->with('messages', "Welcome back, $uid");
+
+		}else{
+			$url = $googleService->getAuthorizationUri();
+			return Redirect::to( (string)$url );
+		}
+	}
+
 	public function doLogin(){
 		$rules = array(
 			'username'	=> 'required',

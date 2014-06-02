@@ -22,6 +22,7 @@ Route::get('/login', 'IndexController@showLogin');
 Route::post('/login', array('uses' => 'IndexController@doLogin'));
 Route::get('/logout', 'IndexController@doLogout');
 Route::get('/login/fb', 'IndexController@doFbLogin');
+Route::get('/login/gp', 'IndexController@doGoogleLogin');
 Route::get('/login/fb/callback', 'IndexController@doFbLoginCallback');
 
 Route::post('/vote', 'IndexController@vote');

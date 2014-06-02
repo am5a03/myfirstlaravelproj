@@ -34,7 +34,7 @@
       dataType: 'json',
       data: { post_id : id, is_up : isUp },
       success: function(data, status){
-        if(data.up && data.down){
+        if(data.up !== undefined && data.down !== undefined){
           if(isUp == 1){
             ref.getElementsByTagName('span')[1].innerHTML = data.up;
             nextElemSib.getElementsByTagName('span')[1].innerHTML = data.down;
@@ -42,6 +42,8 @@
             ref.getElementsByTagName('span')[1].innerHTML = data.down;
             prevElemSib.getElementsByTagName('span')[1].innerHTML = data.up;
           }
+        }else{
+          alert(data.messages);
         }
       },
     });

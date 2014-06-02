@@ -7,7 +7,8 @@
 		"laravel/framework": "4.1.*",
 		"way/generators": "2.*",
 		"hybridauth/hybridauth": "dev-master",
-		"facebook/php-sdk": "dev-master"
+		"facebook/php-sdk": "dev-master",
+		"artdarek/oauth-4-laravel" : "dev-master"
 	},
 	"autoload": {
 		"classmap": [
